@@ -1,0 +1,149 @@
+﻿@model IEnumerable<TabOrganizer___WebApp.Models.Website>
+
+
+@{
+    ViewData["Title"] = "Websites";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="modal-placeholder"></div>
+
+
+<div class="container text-center my-3">
+    <h2 class="font-weight-light">Websites</h2>
+    <div class="row mx-auto my-auto">
+        <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
+            <div class="carousel-inner w-100" role="listbox">
+                @foreach (var item in Model)
+                {
+                    if (Model.First() == item)
+                    {
+                        <div class="carousel-item active">
+                            <div class="col-md-4">
+                                <div class="card card-body">
+                                    <div class="top-left"><span>Name: @item.Name</span></div>
+                                    <button type="button" class="btn btn-outline-primary" data-target="#details_button" data-toggle="modal" id="@item.Id" data-id="@item.Id">Details</button>
+                                    <button type="button" class="btn btn-outline-primary" data-target="#edit_button" data-toggle="ajax_modal_3" id="@item.Id" data-id="@item.Id">Edit</button>
+                                    <form asp-action="DeletePost" asp-route-id="@item.Id" data-ajax="true" data-ajax-success="deleteItem">
+                                        <button type="submit" class="btn btn-outline-primary" data-target="#delete_button" data-toggle="modal" id="@item.Id" data-id="@item.Id">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="carousel-item">
+                            <div class="col-md-4">
+                                <div class="card card-body">
+                                    <div class="top-left"><span>Name: @item.Name</span></div>
+                                    <button type="button" class="btn btn-outline-primary" data-target="#details_button" data-toggle="modal" id="@item.Id" data-id="@item.Id">Details</button>
+                                    <button type="button" class="btn btn-outline-primary" data-target="#edit_button" data-toggle="ajax_modal_3" id="@item.Id" data-id="@item.Id">Edit</button>
+                                    <form asp-action="DeletePost" asp-route-id="@item.Id" data-ajax="true" data-ajax-success="deleteItem">
+                                        <button type="submit" class="btn btn-outline-primary" data-target="#delete_button" data-toggle="modal" id="@item.Id" data-id="@item.Id">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+            <a class="carousel-control-prev w-auto" href="#recipeCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next w-auto" href="#recipeCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+    @*<h5 class="mt-2"><a asp-action="Create">Add new website</a></h5>*@
+    <h5 class="mt-2"><button type="button" class="btn btn-outline-primary" data-target="#create_button" data-toggle="ajax_modal_4">Add new website</button></h5>
+</div>
+
+<div id="partialDiv" class="row" style="background-color:whitesmoke;"></div>
+
+
+
+
+
+@section Scripts
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('.btn-outline-primary[data-target="#details_button"]').click(function (e) {
+
+                var buttonId = $(this).attr("id");
+                var trIndex = $(this).parent().parent().index();
+                $("#partialDiv").load("@Url.Action("WebsiteDetails", "Website")", { 'containerId': @Context.Request.Query["id"], 'websiteId': buttonId },
+                    function (response, status, xhr) {
+                        console.log(buttonId);
+
+                        if (status == "error") {
+                            alert("An error occurred while loading the results.");
+                        }
+                    });
+                e.stopPropagation();
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $('#recipeCarousel').carousel({
+            interval: 10000
+        })
+
+        $('.carousel .carousel-item').each(function () {
+            var minPerSlide = 3;
+            var next = $(this).next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+            next.children(':first-child').clone().appendTo($(this));
+
+            for (var i = 0; i < minPerSlide; i++) {
+                next = next.next();
+                if (!next.length) {
+                    next = $(this).siblings(':first');
+                }
+
+                next.children(':first-child').clone().appendTo($(this));
+            }
+        });
+
+    </script>
+
+
+    <script type="text/javascript">
+                $(function () {
+                    $('button[data-toggle="ajax_modal_3"]').click(function (event) {
+
+                        var buttonId = $(this).attr("id");
+
+                        var url = 'https://localhost:12345/Website/Edit';
+                        $.get(url, { containerId: @Context.Request.Query["id"], id: buttonId }).done(function (data) {
+                            $('#modal-placeholder').html(data);
+                            $('#modal-placeholder > .modal').modal('show');
+                        });
+                    });
+                });
+    </script>
+
+    <script>
+
+        var deleteItem = function (data) {
+            var card = $(this);
+            var button = card.children();
+            var data_id = button.data('id');
+            var buttons = $(':button[data-target="#delete_button"][data-id="' + data_id + '"]');
+            
+            buttons.parent().parent().parent().remove();
+        };
+    </script>
+
+
+}
+
+

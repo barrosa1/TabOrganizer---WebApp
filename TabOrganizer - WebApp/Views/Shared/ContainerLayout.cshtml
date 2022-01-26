@@ -1,0 +1,78 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TabOrganizer</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <!-- Sidebar -->
+        <div class="bg-light border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading">Tab Organizer </div>
+            <div class="list-group list-group-flush">
+                <button type="button" class="btn list-group-item list-group-item-action bg-light" data-toggle="ajax-modal" data-target="#add-container">
+                    Create new
+                </button>
+                <button id="editContainer" type="button" class="btn list-group-item list-group-item-action bg-light" data-toggle="ajax-modal2" data-target="#edit-container">
+                    Edit container
+                </button>
+                <button id="deleteContainer" class="list-group-item list-group-item-action bg-light">Delete container</button>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom">
+            <div class="container">
+                <a class="navbar-brand" asp-action="index" asp-controller="home">Tab Organizer</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" asp-action="index" asp-controller="home">
+                                Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        @if (HttpContextAccessor.HttpContext.Session.GetString("JWToken") == null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-action="index" asp-controller="account">Log in</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-action="register" asp-controller="account">Sign in</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-action="index" asp-controller="container">My containers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-action="logoff" asp-controller="account">Log out</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container-ver2">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

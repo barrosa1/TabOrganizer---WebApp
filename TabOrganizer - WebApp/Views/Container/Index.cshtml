@@ -1,0 +1,66 @@
+﻿@model IEnumerable<TabOrganizer___WebApp.Models.Container>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Containers</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="row">
+    @foreach (var product in Model)
+    {
+        <!-- Card -->
+    <div class="card promoting-card">
+
+        <!-- Card content -->
+        <div class="card-body d-flex flex-row">
+
+            <!-- Avatar -->
+            @*<img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-8.jpg" class="rounded-circle mr-3" height="50px" width="50px" alt="avatar">*@
+
+            <!-- Content -->
+            <div>
+
+                <!-- Title -->
+                <h4 class="card-title font-weight-bold mb-2">@product.Name.Substring(0, Math.Min(product.Name.Length, 17))</h4>
+                <!-- Subtitle -->
+                <p class="card-text"><i class="far fa-clock pr-2"></i>@product.DateCreation</p>
+                <p class="card-text"><i class="far fa-clock pr-2"></i>Websites: @product.Websites.Count</p>
+            </div>
+
+        </div>
+
+        <!-- Card image -->
+        <a asp-action="index" asp-controller="container">
+            <div class="view overlay">
+                @*<img class="card-img-top" src="../img/thumb_image.jpg" alt="Card image cap">*@
+                <div class="card-img-top">
+                    <p class="card-text">@product.Description.Substring(0, Math.Min(product.Description.Length, 183))</p>
+                </div>
+                @*<div class="mask rgba-white-slight"></div>*@
+            </div>
+            </a>
+
+            <!-- Card content -->
+            @*<div class="card-body">*@
+
+            @*<div class="collapse-content">*@
+
+            <!-- Text -->
+            @*<p class="card-text collapse">@product.Description</p>*@
+            <!-- Button -->
+            @*<a class="btn btn-flat red-text p-1 my-1 mr-0 mml-1 collapsed" data-toggle="collapse" href="#collapseContent" aria-expanded="false" aria-controls="collapseContent"></a>*@
+            @*<i class="fas fa-share-alt text-muted float-right p-1 my-1" data-toggle="tooltip" data-placement="top" title="Share this post"></i>*@
+            @*<i class="fas fa-heart text-muted float-right p-1 my-1 mr-3" data-toggle="tooltip" data-placement="top" title="I like it"></i>*@
+
+            @*</div>*@
+
+            @*</div>*@
+
+    </div>
+        <!-- Card -->
+    }
+</div>

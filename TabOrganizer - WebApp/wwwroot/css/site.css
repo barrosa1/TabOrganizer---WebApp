@@ -1,0 +1,303 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+/*    background-color: #17a2b8;*/
+    background: url('../img/background_image.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    height: 100vh;
+}
+
+#containers {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: white;
+}
+
+#login .container #login-row #login-column #login-box {
+    margin-top: 120px;
+    max-width: 600px;
+    height: 320px;
+    border: 1px solid azure;
+    background-color: mistyrose;
+}
+
+    #login .container #login-row #login-column #login-box #login-form {
+        padding: 20px;
+    }
+
+        #login .container #login-row #login-column #login-box #login-form #register-link {
+            margin-top: -85px;
+        }
+
+#table {
+    display: table; /* Allow the centering to work */
+    margin: 0 auto;
+}
+
+ul#horizontal-list {
+    min-width: 696px;
+    list-style: none;
+    padding-top: 20px;
+}
+
+ul#horizontal-list li {
+    display: inline;
+}
+
+.collapse-content .fa.fa-heart:hover {
+    color: #f44336 !important;
+}
+
+.collapse-content .fa.fa-share-alt:hover {
+    color: #0d47a1 !important;
+}
+
+.card {
+    margin-left: 25px;
+    margin-bottom: 20px;
+}
+
+.row {
+    margin-left:0px;
+    margin-right:0px;
+    align-items:center;
+    justify-content:center;
+}
+
+.row2 {
+
+}
+
+.card-img-top {
+    width: 250px;
+    height: 250px;
+    position: relative;
+    background-image: url('../img/container_image.jpg');
+    background-position: center;
+    background-size: cover;
+}
+    .card-img-top .card-text {
+        top: 30%;
+        position: absolute;
+        left: 20%;
+        margin: -25px 0 0 -25px;
+    }
+
+
+/*side navbar style*/
+
+
+/*#wrapper {
+    overflow-x: hidden;
+}*/
+
+#sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: -15rem;
+    -webkit-transition: margin .25s ease-out;
+    -moz-transition: margin .25s ease-out;
+    -o-transition: margin .25s ease-out;
+    transition: margin .25s ease-out;
+}
+
+    #sidebar-wrapper .sidebar-heading {
+        padding: 0.875rem 1.25rem;
+        font-size: 1.25rem;
+        color:white;
+    }
+
+    #sidebar-wrapper .list-group {
+        width: 15rem;
+    }
+
+/*#page-content-wrapper {
+    min-width: 100vw;
+}*/
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+}
+
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: 0;
+        position: fixed;
+        z-index: 1030;
+    }
+
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: -15rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .container-ver2 {
+        max-width: 960px;
+        padding-left: 110px;
+        margin-right: 50px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container-ver2 {
+        max-width: 1140px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+@media (min-width: 1600px) {
+    .container-ver2 {
+        max-width: 1140px;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+
+
+/*websites list style*/
+
+@media (max-width: 768px) {
+    .carousel-inner .carousel-item > div {
+        display: none;
+    }
+
+        .carousel-inner .carousel-item > div:first-child {
+            display: block;
+        }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+/* display 3 */
+@media (min-width: 768px) {
+
+    .carousel-inner .carousel-item-right.active,
+    .carousel-inner .carousel-item-next {
+        transform: translateX(33.333%);
+    }
+
+    .carousel-inner .carousel-item-left.active,
+    .carousel-inner .carousel-item-prev {
+        transform: translateX(-33.333%);
+    }
+}
+
+.carousel-inner .carousel-item-right,
+.carousel-inner .carousel-item-left {
+    transform: translateX(0);
+}
+.top-left {
+
+}
+
+    .top-left span {
+        /*background-color: black;*/
+        color: #fff;
+        font-size:larger;
+        display: inline;
+        /*padding: 0.5rem;*/
+        /* Needs prefixing */
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+    }
+
+.card {
+    background-image: url("https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/6/27/10");
+    height: 100%;
+}
+
+/*.websitePartial{
+    align-content:center;
+    margin-left:50px;
+}*/
